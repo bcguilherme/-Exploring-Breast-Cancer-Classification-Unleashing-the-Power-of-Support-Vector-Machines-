@@ -1,27 +1,59 @@
-# SVM_Pratica
+PyCaret Clustering Tutorial
 
-# Breast Cancer Classification
+PyCaret Logo
 
-This repository contains code for classifying breast cancer tumors as malignant or benign using the Breast Cancer Wisconsin dataset.
+Introduction
 
-## Overview
+Welcome to the PyCaret Clustering Tutorial! PyCaret is an open-source, low-code machine learning library in Python designed to streamline and accelerate machine learning workflows. This tutorial focuses on the Clustering Module, an unsupervised machine learning module that excels in grouping similar objects.
 
-The code uses Support Vector Machine (SVM) for classification. It loads the dataset, performs data preprocessing, and splits the data into training and test sets. The SVM model is trained and evaluated for its accuracy in predicting breast cancer types.
+Installation
 
-## Usage
+Ensure compatibility with Python 3.7-3.10, Ubuntu 16.04+, or Windows 7+. Install PyCaret using pip, with optional full dependencies for specific use cases:
 
-1. Clone this repository to your local environment.
+bash
+Copy code
+pip install pycaret[full]
+Quick Start
 
-2. Run the provided Python script to load the dataset and train the SVM model.
+PyCaret's Clustering Module offers an intuitive workflow:
 
-## Requirements
+Setup: Initialize the training environment and transformation pipeline.
+Create Model: Train and evaluate the performance of a chosen model.
+Assign Labels: Assign cluster labels to the training data based on the trained model.
+Analyze Model: Use various plots to analyze the model's performance.
+Prediction: Predict cluster labels on unseen data.
+Save Model: Save the entire pipeline for later use.
+python
+Copy code
+from pycaret.clustering import *
+s = setup(data, session_id=123)
+kmeans = create_model('kmeans')
+kmeans_cluster = assign_model(kmeans)
+plot_model(kmeans, plot='cluster')
+Explore more functionalities, such as the Object-Oriented API, Experiment Logging, Deploying Models, and Saving/Loading Models and Experiments.
 
-- Python
-- NumPy
-- Scikit-learn
-- Matplotlib
+Object-Oriented API
 
-## License
+PyCaret supports both Functional and Object-Oriented APIs. Experiment seamlessly by importing the ClusteringExperiment class:
 
-This project is open-source under the MIT License.
+python
+Copy code
+from pycaret.clustering import ClusteringExperiment
+exp = ClusteringExperiment()
+exp.setup(data, session_id=123)
+Experiment Logging
 
+Enable experiment tracking with MLFlow or other loggers by setting log_experiment and experiment_name in the setup:
+
+python
+Copy code
+s = setup(data, log_experiment='mlflow', experiment_name='clustering_project')
+Contribution
+
+Feel free to contribute to this tutorial by raising issues, providing feedback, or submitting pull requests.
+
+License
+
+This tutorial is licensed under the MIT License.
+
+Happy clustering with PyCaret! 🚀
